@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Curso Javascript</title>
+    </head>
+    <body>
+
+        <div id="app" ></div>
+
+        <button id="generateSquareButton">Gera quadrado</button>
+
+        <script>
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            var meuBotao = document.getElementById("generateSquareButton");
+
+            var i = 0;
+
+            meuBotao.onclick = function(){
+                var squareElement = document.createElement('div');
+                squareElement.style.width = 100;
+                squareElement.style.height = 100;
+                squareElement.style.backgroundColor = "red";
+
+                squareElement.setAttribute("class", "quadrado");
+                
+                var meuTexto = document.createTextNode('quadrado');
+                squareElement.appendChild(meuTexto);
+                var containerElement = document.querySelector('#app');
+                containerElement.appendChild(squareElement);
+                i++;
+                squareElement.onmouseover = function() {
+                    squareElement.style.backgroundColor = getRandomColor();
+                }
+            };
+            
+        </script>
+    </body>
+</html>
